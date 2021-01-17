@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
 body {
 	margin: auto;
+	font-family: 'Poppins', sans-serif;
 }
 
 .todoapp {
@@ -241,7 +243,7 @@ html .clear-completed:active {
 .filters li a {
 	color: inherit;
 	margin: 3px;
-	padding: 3px 7px;
+	padding: 3px 3px;
 	text-decoration: none;
 	border: 1px solid transparent;
 	border-radius: 3px;
