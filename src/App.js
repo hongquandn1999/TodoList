@@ -12,21 +12,22 @@ function App() {
 	const todoList = [
 		{
 			id: shortid.generate(),
-			text: 'MT',
+			text: 'Noelle',
 			isCompleted: false,
 		},
 		{
 			id: shortid.generate(),
-			text: 'QT',
+			text: 'Yuno',
 			isCompleted: true,
 		},
 		{
 			id: shortid.generate(),
-			text: 'KN',
+			text: 'Hinata',
 			isCompleted: true,
 		},
 	];
 	const [todo, setTodo] = useState(todoList);
+	const [editingValue, setEditingValue] = useState('');
 
 	function addNewTodo(todoItem) {
 		const newTodo = {
@@ -39,10 +40,30 @@ function App() {
 		setTodo(newTodoList);
 	}
 
+	function getIdEditing(id) {
+		setEditingValue(id);
+	}
+
+	function editTodoItem(todoItem, index) {
+		if (index >= 0) {
+			const newTodo = [...todo];
+			console.log(index);
+			console.log(todoItem);
+			newTodo.splice(index, 1, todoItem);
+			setTodo(newTodo);
+			setEditingValue('');
+		}
+	}
+
 	return (
 		<div className="todoapp">
 			<Header onSubmit={addNewTodo} />
-			<TodoList todoList={todo} />
+			<TodoList
+				todoList={todo}
+				getTodoEditingId={getIdEditing}
+				idEditing={editingValue}
+				onEditTodo={editTodoItem}
+			/>
 			<Footer />
 		</div>
 	);
